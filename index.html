@@ -86,5 +86,37 @@ fetch("https://api.imgur.com/3/album/ryQCmre", requestOptions)
 .catch(error => console.log('error', error));      
 </script>
 -->
+
+<script>
+$(document).ready(function(){
+var lc = LC.init(document.getElementsByClassName('literally imgur')[0]);
+$('[data-action=upload-to-imgur]').click(function(e) {
+e.preventDefault();
+
+$('.imgur-submit').html('Uploading...')
+
+// this is all standard Imgur API; only LC-specific thing is the image
+// data argument;
+$.ajax({
+url: 'https://api.imgur.com/3/image',
+type: 'POST',
+headers: {
+// Your application gets an imgurClientId from Imgur
+Authorization: 'Client-ID 6db47bd7029562d' + imgurClientId,
+Accept: 'application/json'
+},
+data: {
+// convert the image data to base64
+image:  lc.canvasForExport().toDataURL().split(',')[1],
+type: 'base64'
+},
+success: function(result) {
+var url = 'https://imgur.com/gallery/' + result.data.id;
+$('.imgur-submit').html("<a href='" + url + "'>" + url + "</a>");
+},
+});
+});
+});
+</script>
 </body>
 </html>
