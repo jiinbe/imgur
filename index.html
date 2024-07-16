@@ -53,7 +53,7 @@ width: auto;
 <script src="app.js"></script>
 <script>
 const file = document.getElementById("input-file")
-const canvas = document.getElementById("preview")
+const img = document.getElementById("Placeholder")
 const url = document.getElementById("url")
 file.addEventListener("change", ev => {
 const formdata = new FormData()
@@ -65,7 +65,7 @@ Authorization: "Client-ID 6db47bd7029562d"
 },
 body: formdata
 }).then(data => data.json()).then(data => {
-canvas.src = data.data.link
+img.src = data.data.link
 url.innerText = data.data.link
 })
 })
