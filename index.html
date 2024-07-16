@@ -65,7 +65,7 @@ Authorization: "Client-ID 6db47bd7029562d"
 },
 body: formdata
 }).then(data => data.json()).then(data => {
-img.src = data.data.link
+canvas.src = data.data.link
 url.innerText = data.data.link
 })
 })
