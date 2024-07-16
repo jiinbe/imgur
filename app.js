@@ -9,10 +9,10 @@ frameImage.src = 'frame.png'; // Replace with the path to your frame image
 input.addEventListener('change', drawImageFromInput);
 
 function drawImageFromInput(callback) {
-  context.clearRect(0, 0, 500, 500);
+  context.clearRect(0, 0, 1024, 1024);
 
   if (input.files.length === 0) {
-    context.drawImage(ph, 0, 0, 500, 500);
+    context.drawImage(ph, 0, 0, 1024, 1024);
     if (typeof callback === 'function') callback();
   } else {
     const img = new Image();
@@ -28,7 +28,7 @@ function drawImageFromInput(callback) {
         y1 = img.height / 2 - size / 2;
       }
       context.drawImage(img, x1, y1, size, size, 0, 0, 500, 500);
-      context.drawImage(frameImage, 0, 0, 500, 500); // Add this line to apply the frame
+      context.drawImage(frameImage, 0, 0, 1024, 1024); // Add this line to apply the frame
 
       prepareDownloadLink();
 
@@ -42,7 +42,7 @@ function prepareDownloadLink() {
   if (input.files[0]) {
     dlLink.setAttribute(
       'download',
-input.files[0].name.replace(/[^\\\/]*$/, 'avatar-amigoindica.png')
+input.files[0].name.replace(/[^\\\/]*$/, 'avatar.png')
     );
   }
   dlLink.hidden = false;
