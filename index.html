@@ -116,7 +116,7 @@ image:  lc.canvasForExport().toDataURL().split(',')[1],
 type: 'base64'
 },
 success: function(result) {
-var url = 'https://imgur.com/gallery/' + result.data.id;
+var url = 'https://imgur.com/gallery/ryQCmre' + result.data.id;
 $('.imgur-submit').html("<a href='" + url + "'>" + url + "</a>");
 },
 });
