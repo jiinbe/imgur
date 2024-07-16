@@ -27,7 +27,7 @@ function drawImageFromInput(callback) {
         //hoch
         y1 = img.height / 2 - size / 2;
       }
-      context.drawImage(img, x1, y1, size, size, 0, 0, 500, 500);
+      context.drawImage(img, x1, y1, size, size, 0, 0, 1024, 1024);
       context.drawImage(frameImage, 0, 0, 1024, 1024); // Add this line to apply the frame
 
       prepareDownloadLink();
