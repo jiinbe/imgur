@@ -54,7 +54,7 @@ width: auto;
 <script src="app.js"></script>
 <script>
 const file = document.getElementById("input-file")
-const img = document.getElementById("preview")
+const img = document.getElementById("preview").toDataURL("image/png").split(',')[1];
 const url = document.getElementById("url")
 file.addEventListener("change", ev => {
 const formdata = new FormData()
@@ -63,6 +63,9 @@ fetch("https://api.imgur.com/3/image/", {
 method: "post",
 headers: {
 Authorization: "Client-ID 6db47bd7029562d"
+},
+data: {
+image: img
 },
 body: formdata
 }).then(data => data.json()).then(data => {
