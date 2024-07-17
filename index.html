@@ -42,7 +42,7 @@ width: auto;
 <body>
 <main>
 <h1>Example Domain</h1>
-<p><input type="file" id="input-file" accept="image/*"></p>
+<p><input type="file" id="input-file" accept="image/*" data-action="upload-to-imgur"></p>
 <p><canvas id="preview" width="1024" height="1024" title="Preview"></canvas></p>
 <strong>
 <p id="url"></p>
@@ -88,7 +88,7 @@ fetch("https://api.imgur.com/3/album/ryQCmre", requestOptions)
 -->
 <script>
 $(document).ready(function(){
-    var lc = LC.init(document.getElementById('preview')[0]);
+    var lc = LC.init(document.getElementById('url')[0]);
     $('[data-action=input-file]').click(function(e) {
       e.preventDefault();
 
@@ -111,7 +111,7 @@ $(document).ready(function(){
         },
         success: function(result) {
           var url = 'https://imgur.com/gallery/' + result.data.id;
-          $('.imgur-submit').html("<a href='" + url + "'>" + url + "</a>");
+          $('#dl').html("<a href='" + url + "'>" + url + "</a>");
         },
       });
     });
