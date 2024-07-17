@@ -11,8 +11,7 @@ body {
 background-color: #f0f0f2;
 margin: 0;
 padding: 0;
-font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-        
+font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;        
 }
 main {
 width: 600px;
@@ -51,6 +50,7 @@ width: auto;
 <p><img src="placeholder.png" alt="Placeholder" width="1" id="placeholder" hidden></p>
 </main>
 <script src="app.js"></script>
+<!--
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>
 <script>
 const submit = () => {
@@ -74,6 +74,39 @@ console.log(error)
 }
 
 document.querySelector('#dl').addEventListener('click', submit)
+</script>
+-->
+
+<script>
+$(document).ready(function(){
+var lc = LC.init(document.getElementsByClassName('imgur')[0]);
+$('[data-action=upload-to-imgur]').click(function(e) {
+e.preventDefault();
+
+$('#dl').html('Uploading...')
+
+// this is all standard Imgur API; only LC-specific thing is the image
+// data argument;
+$.ajax({
+url: 'https://api.imgur.com/3/image',
+type: 'POST',
+headers: {
+// Your application gets an imgurClientId from Imgur
+Authorization: 'Client-ID 4ddb1cef2cbd23a' + imgurClientId,
+Accept: 'application/json'
+},
+data: {
+// convert the image data to base64
+image:  lc.canvasForExport().toDataURL().split(',')[1],
+type: 'base64'
+},
+success: function(result) {
+var url = 'https://imgur.com/gallery/' + result.data.id;
+$('#dl').html("<a href='" + url + "'>" + url + "</a>");
+},
+});
+});
+});
 </script>
 </body>
 </html>
