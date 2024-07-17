@@ -66,18 +66,7 @@ width: auto;
 <a class="btn" download="avatar.png" id="dl" href="">Download</a>
 </p>
 <p>
-<img src="placeholder.png" 
-alt="Placeholder" 
-width="1" 
-id="placeholder" 
-onclick="Menu_Click('Home');"
-ontouchend="Menu_Click('Home');"
-draggable="false"
-cssclass="iconImageStyle"
-style="cursor: pointer;"
-alternatetext="Home"
-tooltip="Home"
-hidden></p>
+<img src="placeholder.png" alt="Placeholder" width="1" id="placeholder" hidden></p>
 </main>
       
 <script src="app.js"></script>
@@ -124,70 +113,36 @@ document.getElementById("input-file").click();
 </script>
 
 <script type="text/javascript">
-var canvas, ctx, canvasX, canvasY, mouseIsDown = 0;
-function init() {
-canvas = document.getElementById("preview");
-ctx = canvas.getContext("2d");
-document.body.addEventListener("mouseup", mouseUp, false);
-document.body.addEventListener("touchcancel", touchUp, false);
-}
-function mouseUp() {
-mouseIsDown = 0;
-mouseXY();
-}
+canvas.addEventListener("touchstart", function (e) {
+mousePos = getTouchPos(canvas, e);
+var touch = e.touches[0];
+var mouseEvent = new MouseEvent("mousedown", {
+clientX: touch.clientX,
+clientY: touch.clientY
+});
+canvas.dispatchEvent(mouseEvent);
+}, false);
+canvas.addEventListener("touchend", function (e) {
+var mouseEvent = new MouseEvent("mouseup", {});
+canvas.dispatchEvent(mouseEvent);
+}, false);
+canvas.addEventListener("touchmove", function (e) {
+var touch = e.touches[0];
+var mouseEvent = new MouseEvent("mousemove", {
+clientX: touch.clientX,
+clientY: touch.clientY
+});
+canvas.dispatchEvent(mouseEvent);
+}, false);
 
-function touchUp() {
-mouseIsDown = 0;
-// no touch to track, so just show state
-showPos();
+// Get the position of a touch relative to the canvas
+function getTouchPos(canvasDom, touchEvent) {
+var rect = canvasDom.getBoundingClientRect();
+return {
+x: touchEvent.touches[0].clientX - rect.left,
+y: touchEvent.touches[0].clientY - rect.top
+};
 }
-
-function mouseDown() {
-mouseIsDown = 1;
-mouseXY();
-}
-
-function touchDown() {
-mouseIsDown = 1;
-touchXY();
-}
-
-function mouseXY(e) {
-if (!e)
-var e = event;
-canvasX = e.pageX - canvas.offsetLeft;
-canvasY = e.pageY - canvas.offsetTop;
-showPos();
-}
-
-function touchXY(e) {
-if (!e)
-var e = event;
-e.preventDefault();
-canvasX = e.targetTouches[0].pageX - canvas.offsetLeft;
-canvasY = e.targetTouches[0].pageY - canvas.offsetTop;
-showPos();
-}
-
-function showPos() {
-// large, centered, bright green text
-ctx.font = "24pt Helvetica";
-ctx.textAlign = "center";
-ctx.textBaseline = "middle";
-ctx.fillStyle = "rgb(64,255,64)";
-var str = canvasX + ", " + canvasY;
-if (mouseIsDown)
-str += " down";
-if (!mouseIsDown)
-str += " up";
-ctx.clearRect(0, 0, canvas.width, canvas.height);
-// draw text at center, max length to fit on canvas
-ctx.fillText(str, canvas.width / 2, canvas.height / 2, canvas.width - 10);
-// plot cursor
-ctx.fillStyle = "white";
-ctx.fillRect(canvasX - 5, canvasY - 5, 10, 10);
-}
-
 </script>
 </body>
 </html>
