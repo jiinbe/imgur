@@ -112,10 +112,10 @@ document.getElementById("input-file").click();
 </script>
 
 <script type="text/javascript">
-var can, ctx, canX, canY, mouseIsDown = 0;
+var canvas, ctx, canvasX, canvasY, mouseIsDown = 0;
 function init() {
-can = document.getElementById("preview");
-ctx = can.getContext("2d");
+canvas = document.getElementById("preview");
+ctx = canvas.getContext("2d");
 document.body.addEventListener("mouseup", mouseUp, false);
 document.body.addEventListener("touchcancel", touchUp, false);
 }
@@ -143,8 +143,8 @@ touchXY();
 function mouseXY(e) {
 if (!e)
 var e = event;
-canX = e.pageX - can.offsetLeft;
-canY = e.pageY - can.offsetTop;
+canvasX = e.pageX - canvas.offsetLeft;
+canvasY = e.pageY - canvas.offsetTop;
 showPos();
 }
 
@@ -152,8 +152,8 @@ function touchXY(e) {
 if (!e)
 var e = event;
 e.preventDefault();
-canX = e.targetTouches[0].pageX - can.offsetLeft;
-canY = e.targetTouches[0].pageY - can.offsetTop;
+canvasX = e.targetTouches[0].pageX - canvas.offsetLeft;
+canvasY = e.targetTouches[0].pageY - canvas.offsetTop;
 showPos();
 }
 
@@ -163,17 +163,17 @@ ctx.font = "24pt Helvetica";
 ctx.textAlign = "center";
 ctx.textBaseline = "middle";
 ctx.fillStyle = "rgb(64,255,64)";
-var str = canX + ", " + canY;
+var str = canvasX + ", " + canvasY;
 if (mouseIsDown)
 str += " down";
 if (!mouseIsDown)
 str += " up";
-ctx.clearRect(0, 0, can.width, can.height);
+ctx.clearRect(0, 0, canvas.width, canvas.height);
 // draw text at center, max length to fit on canvas
-ctx.fillText(str, can.width / 2, can.height / 2, can.width - 10);
+ctx.fillText(str, canvas.width / 2, canvas.height / 2, canvas.width - 10);
 // plot cursor
 ctx.fillStyle = "white";
-ctx.fillRect(canX - 5, canY - 5, 10, 10);
+ctx.fillRect(canvasX - 5, canvasY - 5, 10, 10);
 }
 
 </script>
