@@ -88,11 +88,11 @@ fetch("https://api.imgur.com/3/album/ryQCmre", requestOptions)
 -->
 <script>
 $(document).ready(function(){
-    var lc = LC.init(document.getElementsByClassName('literally imgur')[0]);
-    $('[data-action=upload-to-imgur]').click(function(e) {
+    var lc = LC.init(document.getElementById('preview')[0]);
+    $('[data-action=input-file]').click(function(e) {
       e.preventDefault();
 
-      $('.imgur-submit').html('Uploading...')
+      $('#dl').html('Uploading...')
 
       // this is all standard Imgur API; only LC-specific thing is the image
       // data argument;
