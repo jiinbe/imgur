@@ -45,7 +45,7 @@ width: auto;
 <p><input type="file" id="input-file" accept="image/*"></p>
 <p><canvas id="preview" width="1024" height="1024" title="Preview"></canvas></p>
 <strong>
-<a class="imgLink" href=""></a>
+<p id="img-url"></p>
 </strong>
 <p><a download="avatar.png" id="dl" href="">Download</a></p>
 <p><img src="placeholder.png" alt="Placeholder" width="1" id="placeholder" hidden></p>
@@ -53,40 +53,27 @@ width: auto;
 <script src="app.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>
 <script>
-const imgfile = document.querySelector("#input-file");
+const submit = () => {
+const file = document.querySelector('#input-file').files[0]
+if (!file) return false
 
-imgfile.addEventListener("change", (event) => {
-const selectedFile = event.target.files[0];
-// 建立 FormData 物件，將圖片放入
-const formData = new FormData();
-formData.append("image", selectedFile);
+const formData = new FormData()
+formData.append('image', file)
 
-// 設定請求配置
-const config = {
-headers: {
-Authorization: "Client-ID 42fee0f0a6aba53", // 替換 YOUR_CLIENT_ID 為你的 Imgur 客戶端 ID
-},
-};
-
-// 發送 POST 請求
 axios
-.post("https://api.imgur.com/3/image", formData, config)
-.then((response) => {
-console.log(response.data);
-// 在這裡處理上傳成功後的回應
-const { link } = response.data.data;
-console.log(link);
-const preview = document.querySelector("#preview");
-preview.src = link;
-const imgLink = document.querySelector(".imgLink");
-imgLink.textContent = link;
+.post('https://api.imgur.com/3/image', formData, {
+headers: { Authorization: 'Client-ID 25513b59986e10b' },
+})
+.then((res) => {
+console.log(res)
+document.querySelector('#img-url').textContent = res.data.data.link
 })
 .catch((error) => {
-console.error(error);
-// 在這裡處理上傳失敗時的錯誤
-alert("發生錯誤");
-});
-});
+console.log(error)
+})
+}
+
+document.querySelector('#dl').addEventListener('click', submit)
 </script>
 </body>
 </html>
