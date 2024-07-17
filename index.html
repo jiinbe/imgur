@@ -46,9 +46,7 @@ width: auto;
 <p><canvas id="preview" width="1024" height="1024" title="Preview"></canvas></p>
 <strong>
 <p id="url"></p>
-<p id="img-url"></p>
 </strong>
-<div class="literally imgur"></div>
 <p><a download="avatar.png" id="dl" href="">Download</a></p>
 <p><img src="placeholder.png" alt="Placeholder" width="1" id="placeholder" hidden></p>
 </main>
@@ -88,29 +86,26 @@ fetch("https://api.imgur.com/3/album/ryQCmre", requestOptions)
 .catch(error => console.log('error', error));      
 </script>
 -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>
 <script>
-const submit = () => {
-const file = document.querySelector('#input-file').files[0]
-if (!file) return false
-
-const formData = new FormData()
-formData.append('image', file)
-
-axios
-.post('https://api.imgur.com/3/image', formData, {
-headers: { Authorization: 'Client-ID 25513b59986e10b' },
-})
-.then((res) => {
-console.log(res)
-document.querySelector('#img-url').textContent = res.data.data.link
-})
-.catch((error) => {
-console.log(error)
-})
+function upload() {
+  var img = document.getElementById("input-file").toDataURL("image/png").split(',')[1];
+  
+  $.ajax({
+    url: 'https://api.imgur.com/3/image',
+    type: 'POST',
+    headers: { "Authorization": "Client-ID 6db47bd7029562d" },
+    dataType: 'json',
+    data: {
+      image: img
+    },
+    success: function (response) {
+      console.log(response);
+    },
+    error: function (response) {
+      console.log(response);
+    }
+  });
 }
-
-document.querySelector('#dl').addEventListener('click', submit)
 </script>
 </body>
 </html>
