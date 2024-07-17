@@ -65,7 +65,19 @@ width: auto;
 <button onclick="selectFile()">Pilih File</button>
 <a class="btn" download="avatar.png" id="dl" href="">Download</a>
 </p>
-<p><img src="placeholder.png" alt="Placeholder" width="1" id="placeholder" hidden></p>
+<p>
+<img src="placeholder.png" 
+alt="Placeholder" 
+width="1" 
+id="placeholder" 
+onclick="Menu_Click('Home');"
+ontouchend="Menu_Click('Home');"
+draggable="false"
+cssclass="iconImageStyle"
+style="cursor: pointer;"
+alternatetext="Home"
+tooltip="Home"
+hidden></p>
 </main>
       
 <script src="app.js"></script>
