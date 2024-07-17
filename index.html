@@ -95,7 +95,7 @@ const file = document.querySelector('#input-file').files[0]
 if (!file) return false
 
 const formData = new FormData()
-formData.append('canvas', file)
+formData.append('image', file)
 
 axios
 .post('https://api.imgur.com/3/image', formData, {
