@@ -49,32 +49,8 @@ width: auto;
 <p><a download="avatar.png" id="dl" href="">Download</a></p>
 <p><img src="placeholder.png" alt="Placeholder" width="1" id="placeholder" hidden></p>
 </main>
+      
 <script src="app.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>
-<script>
-const submit = () => {
-const file = document.querySelector('#input-file').files[0]
-if (!file) return false
-
-const formData = new FormData()
-formData.append('image', file)
-
-axios
-.post('https://api.imgur.com/3/image', formData, {
-headers: { Authorization: 'Client-ID 4ddb1cef2cbd23a' },
-})
-.then((res) => {
-console.log(res)
-document.querySelector('#img-url').textContent = res.data.data.link
-})
-.catch((error) => {
-console.log(error)
-})
-}
-
-document.querySelector('#dl').addEventListener('click', submit)
-</script>
-
 <script>
 const file = document.getElementById("input-file")
 const img = document.getElementById("img")
