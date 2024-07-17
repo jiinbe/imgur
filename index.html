@@ -49,7 +49,6 @@ width: auto;
 </strong>
 <div class="literally imgur"></div>
 <p><a download="avatar.png" id="dl" href="">Download</a></p>
-<button onclick="share()">Share</button>
 <p><img src="placeholder.png" alt="Placeholder" width="1" id="placeholder" hidden></p>
 </main>
 <script src="app.js"></script>
@@ -85,40 +84,6 @@ fetch("https://api.imgur.com/3/album/ryQCmre", requestOptions)
 .then(response => response.text())
 .then(result => console.log(result))
 .catch(error => console.log('error', error));      
-</script>
-
-<script>
-function share(){
-try {
-var img = canvas.toDataURL('image/jpeg', 0.9).split(',')[1];
-} catch(e) {
-var img = canvas.toDataURL().split(',')[1];
-}
-// open the popup in the click handler so it will not be blocked
-var w = window.open();
-w.document.write('Uploading...');
-// upload to imgur using jquery/CORS
-// https://developer.mozilla.org/En/HTTP_access_control
-$.ajax({
-url: 'https://api.imgur.com/3/image/',
-type: 'POST',
-data: {
-type: 'base64',
-// get your key here, quick and fast http://imgur.com/register/api_anon
-key: '6db47bd7029562d',
-name: 'neon.jpg',
-title: 'test title',
-caption: 'test caption',
-image: img
-},
-dataType: 'json'
-}).success(function(data) {
-w.location.href = data['upload']['links']['imgur_page'];
-}).error(function() {
-alert('Could not reach api.imgur.com. Sorry :(');
-w.close();
-});
-}
 </script>
 </body>
 </html>
