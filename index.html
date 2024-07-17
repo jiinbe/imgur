@@ -64,12 +64,7 @@ fetch("https://api.imgur.com/3/image/", {
 method: "post",
 headers: {
 Authorization: "Client-ID 6db47bd7029562d"
-},
-        
-data: {
-type: 'base64'
-},
-        
+},        
 body: formdata
 }).then(data => data.json()).then(data => {
 img.src = data.data.link
@@ -105,7 +100,7 @@ w.document.write('Uploading...');
 // upload to imgur using jquery/CORS
 // https://developer.mozilla.org/En/HTTP_access_control
 $.ajax({
-url: 'http://api.imgur.com/2/upload.json',
+url: 'https://api.imgur.com/3/image/',
 type: 'POST',
 data: {
 type: 'base64',
