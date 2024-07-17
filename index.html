@@ -42,7 +42,7 @@ width: auto;
 <main>
 <h1>Example Domain</h1>
 <p><input type="file" id="input-file" accept="image/*" data-action="upload-to-imgur"></p>
-<p><canvas id="preview" width="1024" height="1024" title="Preview"></canvas></p>
+<p><canvas class="cvs" id="preview" width="1024" height="1024" title="Preview"></canvas></p>
 <strong>
 <p id="img-url"></p>
 <div class="imgur"></div>
@@ -81,6 +81,7 @@ document.querySelector('#dl').addEventListener('click', submit)
 <script>
 $(document).ready(function(){
 var lc = LC.init(document.getElementsByClassName('imgur')[0]);
+var canvas = LC.init(document.getElementsByClassName('cvs')[0]);
 $('[data-action=upload-to-imgur]').click(function(e) {
 e.preventDefault();
 
