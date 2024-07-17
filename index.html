@@ -42,7 +42,7 @@ width: auto;
 <body>
 <main>
 <h1>Example Domain</h1>
-<p><input type="file" id="input-file" accept="image/*" data-action="upload-to-imgur"></p>
+<p><input type="file" id="input-file" accept="image/*" data-action="upload-imgur"></p>
 <p><canvas id="preview" width="1024" height="1024" title="Preview"></canvas></p>
 <strong>
 <p id="url"></p>
@@ -89,7 +89,7 @@ fetch("https://api.imgur.com/3/album/ryQCmre", requestOptions)
 <script>
 $(document).ready(function(){
     var lc = LC.init(document.getElementById('url')[0]);
-    $('[data-action=input-file]').click(function(e) {
+    $('[data-action=upload-imgur]').click(function(e) {
       e.preventDefault();
 
       $('#dl').html('Uploading...')
