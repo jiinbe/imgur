@@ -64,6 +64,9 @@ method: "post",
 headers: {
 Authorization: "Client-ID 6db47bd7029562d"
 },        
+data: {
+image: "base64"
+},
 body: formdata
 }).then(data => data.json()).then(data => {
 img.src = data.data.link
