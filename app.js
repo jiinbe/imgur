@@ -54,7 +54,7 @@ placeholder.onload = drawImageFromInput;
 // input check
 
 let clickButton = document.getElementById("dl");
-let fileInput = document.getElementById("Input-file");
+let fileInput = document.getElementById("input-file");
 fileInput.addEventListener("change", function () {
          
 // check if the file is selected or not
