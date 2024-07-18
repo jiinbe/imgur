@@ -34,5 +34,28 @@ touch-action: auto;
 <script src="app.js"></script>
 <script src="imgur.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.7/axios.min.js"></script>
+<script>
+var copyUrlBtn = document.querySelector('.url');  
+copyUrlBtn.addEventListener('click', function(event) {  
+// Select the email link anchor text  
+var urlLink = document.querySelector('.urllink');  
+var range = document.createRange();  
+range.selectNode(urlLink);  
+window.getSelection().addRange(range);  
+
+try {  
+// Now that we've selected the anchor text, execute the copy command  
+var successful = document.execCommand('copy');  
+var msg = successful ? 'successful' : 'unsuccessful';  
+alert('Copy email command was ' + msg);  
+} catch(err) {  
+alert('Oops, unable to copy');  
+}  
+
+// Remove the selections - NOTE: Should use
+// removeRange(range) when it is supported  
+window.getSelection().removeAllRanges();  
+});
+</script>
 </body>
 </html>
