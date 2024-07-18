@@ -29,7 +29,7 @@ imgLink.textContent = link;
 .catch((error) => {
 console.error(error);
 // error
-alert("error!");
+alert("error! url imgur.");
 });
 });
 
