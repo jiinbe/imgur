@@ -27,6 +27,7 @@ button[onclick*="()"] {
 cursor: pointer;
 }
 button, .btn {
+color: #333;
 font-family: inherit;
 font-size: inherit;
 padding: 0.4em;
