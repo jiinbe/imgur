@@ -50,8 +50,10 @@ input.files[0].name.replace(/[^\\\/]*$/, 'avatar.png')
   dlLink.href = canvas.toDataURL();
 }
 
-function checkType() {
-  let type = fileInput.files[0].type;
+function selectFile() {
+document.getElementById("input-file").click();
+
+let type = fileInput.files[0].type;
   mime.innerHTML = type;
 }
 
