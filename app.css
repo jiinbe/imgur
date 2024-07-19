@@ -19,13 +19,6 @@ a:link, a:visited {
 color: #333;
 text-decoration: none;
 }
-h1 {
-position: fixed;
-bottom: 0;
-font-size: 1em;
-right: 1em;
-z-index: 1;
-}
 img, canvas {
 background: rgba(0, 0, 0, 0.05);
 box-shadow: 0 0 0 2px white, 0 0 0 3px currentColor;
@@ -47,6 +40,13 @@ margin: 0 0 0.5em 0;
 box-sizing: border-box;
 border: 1px solid #ccc;
 border-radius: 2px;
+}
+footer {
+position: fixed;
+bottom: 0;
+font-size: 1em;
+right: 1em;
+z-index: 1;
 }
 @media (max-width: 700px) {
 main {
