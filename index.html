@@ -20,7 +20,7 @@ touch-action: auto;
 <h1>Imgur App</h1>
 <p><input type="file" id="input-file" accept="image/*"></p>
 <p><canvas id="preview" width="1024" height="1024" title="Preview"></canvas></p>
-<p class="output"></p>
+<p id="output"></p>
 <p class="urlbtn"><a href="" class="urllink" id="url"></a></p>
 <p>
 <button onclick="selectFile()">Pilih File</button>
@@ -58,8 +58,8 @@ window.getSelection().removeAllRanges();
 </script>
       
 <script>
-const input = document.querySelector('.input-file');
-const output = document.querySelector(".output");
+const input = document.querySelector('#input-file');
+const output = document.querySelector("#output");
 
 input.addEventListener("change", () => {
 const file = input.files[0];
