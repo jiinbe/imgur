@@ -58,8 +58,8 @@ window.getSelection().removeAllRanges();
 </script>
       
 <script>
-const input = document.querySelector('#input-file');
-const output = document.querySelector("#output");
+const input = document.getElementById('input-file');
+const output = document.getElementById("output");
 
 input.addEventListener("change", () => {
 const file = input.files[0];
