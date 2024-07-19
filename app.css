@@ -27,7 +27,6 @@ right: 1em;
 z-index: 1;
 }
 img, canvas {
-border-radius: 0.5em;
 background: rgba(0, 0, 0, 0.05);
 box-shadow: 0 0 0 2px white, 0 0 0 3px currentColor;
 width: 100%;
