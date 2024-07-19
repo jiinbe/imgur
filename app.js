@@ -3,6 +3,7 @@ const canvas = document.getElementById('preview');
 const context = canvas.getContext('2d');
 const ph = document.getElementById('placeholder');
 const dlLink = document.getElementById('dl');
+const mime = document.getElementById('type');
 const frameImage = new Image();
 frameImage.src = 'frame.png'; // Replace with the path to your frame image
 
@@ -48,6 +49,12 @@ input.files[0].name.replace(/[^\\\/]*$/, 'avatar.png')
   dlLink.hidden = false;
   dlLink.href = canvas.toDataURL();
 }
+
+function checkType() {
+  let type = fileInput.files[0].type;
+  mime.innerHTML = type;
+}
+
 
 placeholder.onload = drawImageFromInput;
 
