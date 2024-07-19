@@ -1,5 +1,4 @@
 html {
-color: rgba(0, 0, 0, 0.1);
 overflow: hidden;
 }
 body {
@@ -42,6 +41,7 @@ border: 1px solid #ccc;
 border-radius: 2px;
 }
 footer {
+color: rgba(0, 0, 0, 0.1);
 position: fixed;
 bottom: 0;
 font-size: 1em;
