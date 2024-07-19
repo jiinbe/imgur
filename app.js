@@ -52,15 +52,3 @@ input.files[0].name.replace(/[^\\\/]*$/, 'avatar.png')
 placeholder.onload = drawImageFromInput;
 
 // input check
-const output = document.getElementById("input-file");
-const output = document.getElementById("output");
-
-input.addEventListener("change", () => {
-const file = input.files[0];
-if (file) {
-const { name, type } = file;
-output.textContent = `ext: ${name.split(".").pop()}\nmime: ${type}`;
-} else {
-output.textContent = "";
-}
-});
