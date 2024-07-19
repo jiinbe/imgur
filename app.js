@@ -52,17 +52,15 @@ input.files[0].name.replace(/[^\\\/]*$/, 'avatar.png')
 placeholder.onload = drawImageFromInput;
 
 // input check
+const output = document.getElementById("input-file");
+const output = document.getElementById("output");
 
-let clickButton = document.getElementById("dl");
-let fileInput = document.getElementById("input-file");
-fileInput.addEventListener("change", function () {
-         
-// check if the file is selected or not
-if (fileInput.files.length == 0) {
-clickButton.disabled = true;
-clickButton.opacity = 0.3;
+input.addEventListener("change", () => {
+const file = input.files[0];
+if (file) {
+const { name, type } = file;
+output.textContent = `ext: ${name.split(".").pop()}\nmime: ${type}`;
 } else {
-clickButton.disabled = false;
-clickButton.style.opacity = 1;
+output.textContent = "";
 }
 });
