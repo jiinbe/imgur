@@ -32,10 +32,3 @@ console.error(error);
 alert("error! url imgur.");
 });
 });
-
-function selectFile() {
-document.getElementById("input-file").click();
-
-let type = fileInput.files[0].type;
-  mime.innerHTML = type;
-}
