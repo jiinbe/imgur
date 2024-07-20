@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-<title>Imgur App</title>
+<title>Imgur Image App</title>
 
 <meta charset="utf-8" />
 <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
@@ -13,24 +13,17 @@
 
 <body>
 <main>
-<!--<h1>Imgur App</h1>-->
+<h1>Imgur Image App</h1>
 <p>
 <input type="file" id="input-file" accept="image/*">
 </p>
 
 <p>
-<div id="panzoom">
 <img src="placeholder.png" alt="Placeholder" width="1" id="placeholder" hidden>
 <canvas id="preview" width="1024" height="1024" title="Preview"></canvas>
-</div>
 </p>
   
 <p class="urlbtn"><a href="" class="urllink" id="url"></a></p>
-
-<p>
-<input type="range" class="zoom-range">
-<button class="reset">Reset</button>
-</p>
 
 <p>
 <button onclick="selectFile()"><i class="fa fa-upload"></i> Pilih File</button>
@@ -40,7 +33,6 @@
 <footer><p>Ferry Ayunda</p></footer>
 </main>
 
-<script src="zoom.js"></script>
 <script src="app.js"></script>
 <script src="imgur.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.7/axios.min.js"></script>
