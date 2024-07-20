@@ -18,14 +18,22 @@
 <p><canvas id="preview" width="1024" height="1024" title="Preview"></canvas></p>
 <p class="urlbtn"><a href="" class="urllink" id="url"></a></p>
 <p>
+<input type="range" class="zoom-range">
+<button class="reset">Reset</button>
+</p>
+<p>
 <button onclick="selectFile()"><i class="fa fa-upload"></i> Pilih File</button>
 <a href="" class="btn" download="avatar.png" id="dl"><i class="fa fa-download"></i> Download</a>
 </p>
 <p>
-<img src="placeholder.png" alt="Placeholder" width="1" id="placeholder" hidden></p>
+<div id="panzoom">
+<img src="placeholder.png" alt="Placeholder" width="1" id="placeholder" hidden>
+</div>
+</p>
 <footer><p>Ferry Ayunda</p></footer>
 </main>
-      
+
+<script src="zoom.js"></script>
 <script src="app.js"></script>
 <script src="imgur.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.7/axios.min.js"></script>
