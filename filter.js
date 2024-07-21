@@ -1,7 +1,7 @@
 var theCanvas;
 
 function previewFile() {
-var preview = document.querySelector(".preview");
+var preview = document.querySelector(".prev");
 var file = document.querySelector('input[type=file]').files[0];
 var reader = new FileReader();
 
@@ -11,7 +11,7 @@ preview.src = reader.result;
 
 if (file) {
 reader.readAsDataURL(file)
-theCanvas = Caman('.preview')
+theCanvas = Caman('.prev')
 }
 }
 
