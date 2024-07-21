@@ -9,27 +9,18 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="app.css">
-
-<script src="http://www.dukelearntoprogram.com/course1/common/js/image/SimpleImage.js"></script>
 </head>
 
 <body>
 <main>
 <!--<h1>Imgur Image App</h1>-->
 <p>
-<input class="finput" type="file" id="input-file" accept="image/*" onchange="loadImage()">
+<input type="file" id="input-file" accept="image/*" onchange="loadImage()">
 </p>
 
 <p>
 <img src="placeholder.png" alt="Placeholder" width="1" id="placeholder" hidden>
-<canvas class="cvs" id="preview" width="1024" height="1024" title="Preview"></canvas>
-</p>
-
-<p>
-<input type ="button" value="Grayscale" onclick="doGrayscale()">
-<button onclick="doRed()">RedFilter</button>
-<button onclick="doEclipse()">Eclipse</button>
-<button onclick="doPurple()">Purple</button>
+<canvas id="preview" width="1024" height="1024" title="Preview"></canvas>
 </p>
   
 <p class="urlbtn"><a href="" class="urllink" id="url"></a></p>
@@ -37,14 +28,12 @@
 <p>
 <button onclick="selectFile()"><i class="fa fa-upload"></i> Pilih File</button>
 <a href="" class="btn" download="avatar.png" id="dl"><i class="fa fa-download"></i> Download</a>
-<button onclick="wipeClean()">Clear</button>
 </p>
 
 <footer><p>Ferry Ayunda</p></footer>
 </main>
 <script src="app.js"></script>
 <script src="imgur.js"></script>
-<script src="filter.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.7/axios.min.js"></script>
 <script>
 var copyUrlBtn = document.querySelector('.urlbtn');  
