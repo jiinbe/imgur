@@ -5,9 +5,9 @@ var redFilterImage = null;
 var blurImage = null;
 var blurred = null;
 var rainbowImage = null;
-var canvas = document.getElementById("preview");
+var canvas = document.querySelector(".cvs");
 function loadImage() {
-   var fileInput = document.getElementById("input-file");
+   var fileInput = document.querySelector(".finput");
   originalImage = new SimpleImage(fileInput);
   grayImage = new SimpleImage(fileInput);
   redImage = new SimpleImage(fileInput);
